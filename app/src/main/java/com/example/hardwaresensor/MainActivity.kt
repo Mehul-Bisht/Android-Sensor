@@ -7,8 +7,8 @@ import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.FrameLayout
 import androidx.core.content.getSystemService
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlin.random.Random
 
 class MainActivity : AppCompatActivity(), SensorEventListener {
@@ -16,11 +16,15 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
     val colors = arrayOf(Color.CYAN,Color.GREEN,Color.MAGENTA,Color.YELLOW,Color.RED,Color.BLUE)
     lateinit var sensorManager: SensorManager
     lateinit var proximitySensor: Sensor
+    lateinit var frame_top: FrameLayout
+    lateinit var frame_bottom: FrameLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        frame_top = findViewById(R.id.frame_top)
+        frame_bottom = findViewById(R.id.frame_bottom)
         sensorManager = getSystemService<SensorManager>()!!
         proximitySensor = sensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY)!!
     }
