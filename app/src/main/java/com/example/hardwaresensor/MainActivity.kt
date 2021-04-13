@@ -24,14 +24,14 @@ class MainActivity : AppCompatActivity() {
 
         sensorEventListener = object : SensorEventListener {
             override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {
-                //
+                // accuracy changes based on light conditions, or if device is locked
             }
 
             override fun onSensorChanged(event: SensorEvent?) {
                 Log.d("Sensor ","""
                     ${event!!.values[0]}
                 """.trimIndent())
-            }
+            } // emits 0 when light is blocked, otherwise 5
         }
     }
 
